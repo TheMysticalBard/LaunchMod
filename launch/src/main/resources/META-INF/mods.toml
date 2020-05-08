@@ -3,13 +3,12 @@
 
     [[mods]]
       modId="launch"
-      version="1.0"
+      version="1.14.4-1.0.0"
       displayName="Launch"
       credits="Those friends that encouraged me to make something for once in my life."
       authors="TheMysticalBard"
       description='''
-      This mod adds one single enchantment that I thought was pretty cool. Launch.
-      '''
+      This mod adds one single enchantment that I thought was pretty cool. Launch.'''
 
       [[dependencies.launch]]
         modId="forge"
