@@ -1,0 +1,26 @@
+    modLoader="javafml"
+    loaderVersion="[28,)"
+
+    [[mods]]
+      modId="launch"
+      version="1.0"
+      displayName="Launch"
+      credits="Those friends that encouraged me to make something for once in my life."
+      authors="TheMysticalBard"
+      description='''
+      This mod adds one single enchantment that I thought was pretty cool. Launch.
+      '''
+
+      [[dependencies.launch]]
+        modId="forge"
+        mandatory=true
+        versionRange="[28,)"
+        ordering="NONE"
+        side="BOTH"
+
+      [[dependencies.launch]]
+        modId="minecraft"
+        mandatory=true
+        versionRange="[1.14.4]"
+        ordering="NONE"
+        side="BOTH"
