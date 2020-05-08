@@ -88,6 +88,7 @@ public class LaunchEnchantment extends CustomEnchantment
 			int launchLevel = EnchantmentHelper.getEnchantmentLevel(Launch.LAUNCH_ENCHANTMENT.get(), event.player.getItemStackFromSlot(EquipmentSlotType.LEGS));
 			if(launchLevel > 0 && event.player.isSneaking() && !event.player.isAirBorne) {
 				LOGGER.debug("Charge Stage: " + chargeStage);
+				LOGGER.debug("Completed Stage: " + completedStage);
 				if(chargeStage == -1) {
 					chargeStage = 0;
 					chargeTimer = MathHelper.ceil(20 * 2);
@@ -97,18 +98,17 @@ public class LaunchEnchantment extends CustomEnchantment
 				}
 				if(chargeTimer <= 0) {
 					int oldStage = completedStage++;
-					completedStage = Math.min(3, completedStage);
-					if(chargeStage > 0 && oldStage != completedStage) {
-						SoundEvent customSound = SoundEvents.BLOCK_BEACON_ACTIVATE;
+					completedStage = Math.min(launchLevel, completedStage);
+					if(chargeStage > 0 && oldStage != completedStage /*&& Launch.CHARGING_SOUND.get() != null*/) {
+						SoundEvent playerCharging = SoundEvents.BLOCK_BEACON_ACTIVATE;
 						event.player.world.playSound(null,
 								event.player.posX,
 								event.player.posY,
 								event.player.posZ,
-								customSound,
+								playerCharging,
 								SoundCategory.PLAYERS,
 								1.0f,
 								1.1f + 0.3f * completedStage);
-						LOGGER.debug("Sound played: " + customSound);
 					}
 					if(chargeStage < launchLevel) {
 						chargeStage++;
