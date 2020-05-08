@@ -99,7 +99,7 @@ public class LaunchEnchantment extends CustomEnchantment
 				if(chargeTimer <= 0) {
 					int oldStage = completedStage++;
 					completedStage = Math.min(launchLevel, completedStage);
-					if(chargeStage > 0 && oldStage != completedStage /*&& Launch.CHARGING_SOUND.get() != null*/) {
+					if(chargeStage > 0 && oldStage != completedStage) {
 						SoundEvent playerCharging = SoundEvents.BLOCK_BEACON_ACTIVATE;
 						event.player.world.playSound(null,
 								event.player.posX,
