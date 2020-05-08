@@ -63,7 +63,6 @@ public class LaunchEnchantment extends CustomEnchantment
 					if (player.isSprinting()) {
 						player.jumpMovementFactor = 0.026F;
 					}
-					LOGGER.debug("Player had enchantment, velocity added!");
 					player.velocityChanged = true;
 				}
 			}
@@ -86,9 +85,7 @@ public class LaunchEnchantment extends CustomEnchantment
 				&& Launch.LAUNCH_ENCHANTMENT.get() != null
 		) {
 			int launchLevel = EnchantmentHelper.getEnchantmentLevel(Launch.LAUNCH_ENCHANTMENT.get(), event.player.getItemStackFromSlot(EquipmentSlotType.LEGS));
-			if(launchLevel > 0 && event.player.isSneaking() && !event.player.isAirBorne) {
-				LOGGER.debug("Charge Stage: " + chargeStage);
-				LOGGER.debug("Completed Stage: " + completedStage);
+			if(launchLevel > 0 && event.player.isSneaking() && event.player.onGround) {
 				if(chargeStage == -1) {
 					chargeStage = 0;
 					chargeTimer = MathHelper.ceil(20 * 2);
